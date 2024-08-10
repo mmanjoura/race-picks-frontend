@@ -22,7 +22,8 @@ export default function ParentComponent({
   isLoading,
   runners,
   hiddenRows,
-  handleCheckboxChange
+  handleCheckboxChange,
+  selectedDate
 }) {
   return (
     <div className="parent-component">
@@ -50,6 +51,7 @@ export default function ParentComponent({
         hiddenRows={hiddenRows}
         handleCheckboxChange={handleCheckboxChange}
         totalFurlongs={totalFurlongs}
+        selectedDate={selectedDate}
       />
     </div>
   );

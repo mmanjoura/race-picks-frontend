@@ -68,7 +68,7 @@ export default function Home() {
   useEffect(() => {
     if (selectedMeeting) {
       axios.get(`${baseURL}/preparation/GetMeetingRunners`, {
-        params: { event_name: selectedMeeting, event_time: selectedTime, date: selectedDate }  // Use the selectedDate here
+        params: { event_name: selectedMeeting, event_time: selectedTime, event_date: selectedDate }  // Use the selectedDate here
       }).then((response) => {
         setRunners(response?.data?.meetingData || []);
       }).catch((error) => {
@@ -112,6 +112,8 @@ export default function Home() {
       const response = await axios.post(`${baseURL}/analysis/MonteCarloSimulation`, {
         event_name: selectedMeeting,
         event_time: selectedTime,
+        event_date: selectedDate ,
+
         selection_id: 1,
         ...settings,
         event_distance: `${calculateTotalFurlongs()}f` // Use total furlongs in request
@@ -179,6 +181,7 @@ export default function Home() {
             runners={runners}
             hiddenRows={hiddenRows}
             handleCheckboxChange={handleCheckboxChange}
+            selectedDate={selectedDate} // Pass selectedDate
           />
         </main>
       </div>
